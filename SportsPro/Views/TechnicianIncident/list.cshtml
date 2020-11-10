@@ -1,0 +1,29 @@
+﻿@model IncidentEditViewModel
+    
+<h2> Technician: @ViewBag.Current</h2>
+<h2>Assigned/Open Incident</h2>
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr><th>Title</th><th>Customer</th><th>Product</th><th>Date Opened</th><th>Edit</th></tr>
+    </thead>
+    <tbody>
+        @foreach (var inci in Model.Incidents)
+        {
+            <tr>
+                <td>@inci.Title</td>
+                <td value="">@inci.Customer.FullName</td>
+                <td>@inci.Product.Name</td>
+                <td>@inci.DateOpened</td>
+                <td>
+                    <a class="btn btn-warning" asp-controller="TechnicianIncident" asp-action="Edit"
+                       asp-route-id="@inci.IncidentID"
+                       asp-route-slug="TechInc">Edit</a>
+                </td >
+
+            </tr>
+
+        }
+        </tbody>
+
+</table>
+<a class="btn btn-primary" asp-controller="TechnicianIncident" asp-action="get">Switch Technician</a>

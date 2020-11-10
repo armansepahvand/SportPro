@@ -1,0 +1,20 @@
+﻿
+
+@if (TempData["AddMessage"] != null)
+{
+    <br />
+    <h3 class="jumbotron bg-success container text-center"> @TempData["AddMessage"] </h3>
+    TempData.Clear();
+}
+else if (TempData["DeleteMessage"] != null)
+{
+    <br />
+    <h3 class="jumbotron bg-success container text-center "> @TempData["DeleteMessage"] </h3>
+    TempData.Clear();
+}
+else if (TempData["EditMessage"] != null)
+{
+    <br />
+    <h3 class="jumbotron bg-success container text-center"> @TempData["EditMessage"] </h3>
+    TempData.Clear();
+}

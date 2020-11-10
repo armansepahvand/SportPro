@@ -1,0 +1,23 @@
+﻿@model IncidentEditViewModel
+    
+@{
+    ViewBag.Title = "Technician Incidents - Spo";
+    
+}
+
+
+<form asp-action="list" method="post">
+
+    <div class="form-group">
+        <label asp-for="CurrentTechnician.TechnicianID"> Technicians</label>
+        <select asp-for="CurrentTechnician.TechnicianID" class="form-control">
+            <option value="">select a Technician</option>
+            @foreach (Technician g in Model.Technicians)
+            {
+                <option value="@g.TechnicianID">@g.Name</option>
+                
+            }
+        </select>
+    </div>
+    <button type="submit" class="btn btn-primary">Select</button>
+</form>

@@ -1,0 +1,59 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - SportsPro</title>
+
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+ 
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-md navbar-light navbar bg-warning">
+            <a class="navbar-brand text-info font-weight-bold" href="/">SportsPro</a>
+            <button class="navbar-toggler" type="button"
+                    data-toggle="collapse" data-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <nav class="collapse navbar-collapse" id="navbarSupportedContent">
+
+                <div class="navbar-nav mr-auto">
+                    <a class="nav-item nav-link active small text-info font-weight-bold" asp-controller="Home" asp-action="Index">Home</a>
+                    <a class="nav-item nav-link active small text-info font-weight-bold " asp-controller="Product" asp-action="List">Products</a>
+                    <a class="nav-item nav-link active small text-info font-weight-bold" asp-controller="Technician" asp-action="List">Technicians</a>
+                    <a class="nav-item nav-link active small text-info font-weight-bold " asp-controller="Customer" asp-action="List">Customers</a>
+                    <a class="nav-item nav-link active small text-info font-weight-bold " asp-controller="Incident" asp-action="List">Incidents</a>
+                    <a class="nav-item nav-link active small text-info font-weight-bold " asp-controller="CustomerProduct" asp-action="GetCustomer">Registrations</a>
+                </div>
+                <div class="navbar-nav navbar-right">
+                    <partial name="_LoginPartial" />
+                    <a class="nav-item nav-link active small text-info font-weight-bold" asp-controller="Home" asp-action="About">About</a>
+                </div>
+            </nav>
+        </nav>
+    </header>
+    <partial name="_TempMessageDisplay" model="Model" />
+
+    <div class="container">
+        <main role="main" class="pb-5">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-bottom-0 footer text-muted">
+        <div class="container">&copy; @DateTime.Now.Year - SportsPro</div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

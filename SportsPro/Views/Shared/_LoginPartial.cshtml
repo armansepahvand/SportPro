@@ -1,0 +1,37 @@
+﻿@using Microsoft.AspNetCore.Identity
+
+@inject SignInManager<User> SignInManager
+@inject UserManager<User> UserManager
+
+<ul class="navbar-nav">
+    @if (SignInManager.IsSignedIn(User))
+    {
+        <li class="nav-item">
+            <form method="post" asp-action="LogOut" asp-controller="Account"
+                  asp-area="">
+                <input type="submit" value="Log Out"
+                       class="btn btn-info" />
+                <span class="text-info">Hello @User.Identity.Name</span>
+            </form>
+        </li>
+    }
+    else
+    {
+        var action = ViewContext.RouteData.Values["action"]?.ToString();
+
+        // anonymous user - Register link and Log In button
+        <li class="nav-item @Nav.Active("Register", action)">
+            <a asp-action="Register" asp-controller="Account"
+               asp-area="" class="nav-link text-info small font-weight-bold">
+                @*<span class="fas fa-edit"></span>&nbsp;Register*@
+                Register
+            </a>
+        </li>
+        <li class="nav-item">
+            <a asp-action="Login" asp-controller="Account"
+               asp-area="" class="nav-link text-info small font-weight-bold">Log In</a>
+        </li>
+    }
+</ul>
+
+

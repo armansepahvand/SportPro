@@ -1,0 +1,41 @@
+﻿@model IncidentsViewModel
+@{
+    ViewBag.Title = "Incident Manager - Spo";
+    ViewBag.mode = "Incident";
+}
+
+<h2>@Model.IncidentTitle</h2>
+<div >
+    <a class="m-2 @(ViewBag.Alink=="All" ? " btn btn-primary" : "" )   " asp-action="List" asp-route-filter="All"> All incidents</a>
+    <a class="m-2  @(ViewBag.Alink=="Unassigned" ? " btn btn-primary" : "" ) " asp-action="List" asp-route-filter="Unassigned"> Unassigned</a>
+    <a class="m-2  @(ViewBag.Alink=="Open" ? " btn btn-primary" : "" ) " asp-action="List" asp-route-filter="Open"> Open Incidents</a>
+</div>
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr><th>Title</th><th>Customer</th><th>Product</th><th>Date Opened</th><th>Edit</th><th>Delete</th></tr>
+    </thead>
+    <tbody>
+        @foreach (var inci in Model.Incidents)
+        {
+            <tr>
+                <td>@inci.Title</td>
+                <td value="">@inci.Customer.FullName</td>
+                <td>@inci.Product</td>
+                <td>@inci.DateOpened</td>
+                <td>
+                    <a class="btn btn-warning" asp-controller="Incident" asp-action="Edit"
+                       asp-route-id="@inci.IncidentID"
+                       asp-route-slug="@inci.Title.Trim()">Edit</a>
+                </td>
+                <td>
+                    <a class="btn btn-danger" asp-controller="Incident" asp-action="Delete"
+                       asp-route-id="@inci.IncidentID"
+                       asp-route-slug=@inci.Title.Trim()>Delete</a>
+                </td>
+            </tr>
+
+        }
+    </tbody>
+
+</table>
+<a class="btn btn-primary" asp-controller="Incident" asp-action="Add">Add New Incident</a>

@@ -1,0 +1,47 @@
+﻿@model CustomerProductViewModel
+
+<h2> Customer: @ViewBag.Current</h2>
+<h2>Registrations</h2>
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr><th>Customer</th><th>Delete</th></tr>
+    </thead>
+    <tbody>
+        @foreach (var prod in Model.CustomerProducts)
+        {
+            <tr>
+                <td>@prod.Product.Name</td>
+               
+                <td>
+                    <a class="btn btn-danger"  asp-action="Delete"
+                       asp-route-id="@prod.ProductId"
+                       asp-route-slug="@prod.CustomerId">Delete</a>
+                </td>
+
+            </tr>
+
+        }
+    </tbody>
+
+</table>
+
+<form asp-action="Add" method="post">
+
+    <div class="form-group">
+        <label asp-for="CurrentProduct.ProductID"> Get Product</label>
+        <h5 style="color:red">@TempData["Error"]</h5>
+        <select asp-for="CurrentProduct.ProductID" class="form-control">
+            <option value="">select a Product</option>
+            @foreach (Product g in Model.Products)
+            {
+                <option value="@g.ProductID">@g.Name</option>
+            }
+        </select>
+    </div>
+
+    <input type="hidden" asp-for="CurrentCustomer.CustomerID" />
+    <button type="submit" class="btn btn-primary">Select</button>
+</form>
+
+
+@*<a class="btn btn-primary" asp-controller="TechnicianIncident" asp-action="get">Switch Technician</a>*@

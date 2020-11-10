@@ -1,0 +1,24 @@
+﻿@model CustomerProductViewModel
+    
+@{
+    ViewBag.Title = "Technician Incidents - Spo";
+    
+}
+
+
+<form asp-action="list" method="post">
+
+    <div class="form-group">
+        <label asp-for="CurrentCustomer.CustomerID"> Get Customer</label>
+        <select asp-for="CurrentCustomer.CustomerID" class="form-control">
+            <option value="">select a Customer</option>
+            @foreach (Customer g in Model.Customers)
+            {
+                <option value="@g.CustomerID">@g.FullName</option>
+                
+            }
+        </select>
+    </div>
+    
+    <button type="submit" class="btn btn-primary">Select</button>
+</form>
