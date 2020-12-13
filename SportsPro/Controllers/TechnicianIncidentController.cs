@@ -9,7 +9,7 @@ using SportsPro.Models.DataLayer;
 
 namespace SportsPro.Controllers
 {
-    //Technician-Incident Controller bbb
+    //Technician-Incident Controller 
     [Authorize]
     public class TechnicianIncidentController : Controller
     {
